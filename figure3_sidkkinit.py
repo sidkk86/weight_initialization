@@ -1,8 +1,8 @@
 # Code to replicate Figure 3 in "On Weight Iniitalization in Deep Neural Networks"
 # by Siddharth Krishna Kumar. The code uses the python packages keras, numpy and matplotlib
-# The code makes no effort to be (a) exceedingly time efficient in its runs. The point is merely
-# to show that the initialization scheme proposed in the paper starts converging a lot faster
-# than the Xavier initialization.
+# The code makes no effort to be (a) exceedingly time efficient in its runs or b) extremely general in
+# implementation. The point is merely to show that the initialization scheme proposed in the paper
+# starts converging a lot faster than the Xavier initialization.
 import keras
 from keras.models import Sequential
 from keras.initializers import VarianceScaling,glorot_normal
