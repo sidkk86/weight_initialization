@@ -82,6 +82,7 @@ def model_for_testing(activataion_fn = 'sigmoid',initializer = 'glorot_normal'):
     model.compile(loss='categorical_crossentropy',optimizer=opt,metrics=[metrics.top_k_categorical_accuracy,'accuracy'])
     return model
 
+# Running the model with the Xavier initialization
 glorot_model = model_for_testing(activataion_fn = 'sigmoid',initializer = 'glorot_normal')
 sigmoid_results_glorot = glorot_model.fit(x_train, y_train,
               batch_size=batch_size,
@@ -89,7 +90,7 @@ sigmoid_results_glorot = glorot_model.fit(x_train, y_train,
               validation_data=(x_test, y_test),
               shuffle=True)
 
-
+# Running the model with the initializer provided in the paper
 sid_initializer_exact = custom_initializer(3.6)
 sid_model = model_for_testing(activataion_fn = 'sigmoid',initializer = sid_initializer_exact)
 sigmoid_results_sid = sid_model.fit(x_train, y_train,
