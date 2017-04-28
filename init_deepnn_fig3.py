@@ -37,12 +37,24 @@ y_train = keras.utils.to_categorical(y_train, num_classes)
 y_test = keras.utils.to_categorical(y_test, num_classes)
 
 def custom_initializer(factor):
+	'''An initializer taking in a custom scaling factor. Based on the analysis in the paper,
+	   for a neural network with sigmoid activations, the scaling factor should be approximately
+	   3.6
+	   
+	   INPUT: Scaling factor to be used in the weight initialization
+	   OUTPUT: An initializer to be fed to Keras
+	'''
 	return VarianceScaling(scale=factor,
                            mode='fan_in',
                            distribution='normal',
                            seed=None)
 
 def model_for_testing(activataion_fn = 'sigmoid',initializer = 'glorot_normal'):
+    ''' Neural Network with the architecture described in Figure 2 of the paper.
+    
+        INPUTS: Valid Keras activation function and initializer
+	OUTPUT: Keras Model
+    '''
     model = Sequential()
     model.add(Conv2D(32, (3, 3), kernel_initializer=initializer , padding='same',
     			 activation = activataion_fn, input_shape=x_train.shape[1:]))
